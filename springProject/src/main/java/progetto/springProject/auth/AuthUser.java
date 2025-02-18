@@ -1,22 +1,20 @@
 package progetto.springProject.auth;
 
-//Classe utilizzata per tenere traccia di username e ruolo associato a un token.
+//Classe utilizzata per tenere traccia di username associato a un token.
 public class AuthUser {
 	// Username dell'utente autenticato
     private String username;
     
-    // Ruolo dell'utente autenticato (es. "admin" o "user")
-    private String role;
+    private Long id;
+    
 
     /**
-     * Costruttore che inizializza l'oggetto AuthUser con username e ruolo.
+     * Costruttore che inizializza l'oggetto AuthUser con username
      *
      * @param username Username dell'utente
-     * @param role     Ruolo dell'utente
      */
-    public AuthUser(String username, String role) {
+    public AuthUser(String username) {
        this.username = username;
-       this.role = role;
     }
 
     // Getter e Setter per username e ruolo
@@ -29,11 +27,12 @@ public class AuthUser {
        this.username = username;
     }
 
-    public String getRole() {
-       return role;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setRole(String role) {
-       this.role = role;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 }

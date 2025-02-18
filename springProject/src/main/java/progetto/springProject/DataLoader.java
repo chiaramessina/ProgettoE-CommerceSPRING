@@ -28,34 +28,37 @@ public class DataLoader implements CommandLineRunner{
         if (userRepository.count() == 0) {
             // Creazione di un utente admin
             User adminUser = new User(
-                null,               // ID (generato automaticamente)
-                "admin",            // username
-                "adminpass",        // password (in chiaro per semplicità)
-                "admin",            // ruolo
-                "Mario Rossi",      // nome completo
-                "mario.rossi@example.com" // email
+                null,         // ID (generato automaticamente)
+                "mariobross",      // username
+                "Mario",      // nome
+                "Rossi",      //cognome
+                "mariopass",   // password (in chiaro per semplicità)
+                "mario.rossi@example.com", // email
+                null
             );
             userRepository.save(adminUser);
 
             // Creazione di un utente normale
             User normalUser = new User(
                 null,
-                "user",
-                "userpass",
-                "user",
-                "Luigi Bianchi",
-                "luigi.bianchi@example.com"
+                "giovannino",
+                "Giovanni",
+                "Bianchi",
+                "giovannipass",
+                "giovanni.bianchi@example.com",
+                null
             );
             userRepository.save(normalUser);
 
             // Creazione di un altro utente di esempio
             User user2 = new User(
                 null,
-                "anna",
+                "annina",
+                "Anna",
+                "Verdi",
                 "annapass",
-                "user",
-                "Anna Verdi",
-                "anna.verdi@example.com"
+                "anna.verdi@example.com",
+                null
             );
             userRepository.save(user2);
         }

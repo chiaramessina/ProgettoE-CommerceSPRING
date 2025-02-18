@@ -22,4 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
      */
 	Optional<User> findByUsername(String username);
     // Metodi customizzati possono essere aggiunti qui, se necessario.
+	Optional<User> findByToken(String token);
+	
+	
 }

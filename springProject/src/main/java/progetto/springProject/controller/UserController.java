@@ -99,10 +99,10 @@ public class UserController {
 	    public Object getFullUsers(HttpServletRequest request, HttpServletResponse response) {
 	    	  // Verifica l'autenticazione tramite il token
 	    	AuthUser authUser = getAuthenticatedUser(request);
-	        if (authUser == null) {
+	        /*if (authUser == null) {
 	            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 	            return Collections.singletonMap("message", "Non autorizzato");
-	        }
+	        }*/
 
 	        return userRepository.findAll();
 	    }
@@ -124,13 +124,8 @@ public class UserController {
 	            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 	            return Collections.singletonMap("message", "Non autorizzato");
 	        }
-	        // Verifica che l'utente abbia il ruolo "admin"
-	        if (!"admin".equals(authUser.getRole())) {
-	            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-	            return Collections.singletonMap("message", "Accesso negato: solo admin può aggiungere utenti");
-	        }
+	        
 	        // Salva il nuovo utente nel database
-	        newUser.setRole("user");
 	        newUser.setUsername(newUser.getName());
 	        userRepository.save(newUser);
 	        return Collections.singletonMap("message", "Utente aggiunto con successo");

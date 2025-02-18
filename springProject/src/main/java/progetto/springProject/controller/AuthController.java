@@ -57,16 +57,14 @@ public class AuthController {
             return result;
         }
 
-        // Se le credenziali sono corrette, recupera l'utente e il suo ruolo
+        // Se le credenziali sono corrette, recupera l'utente
         User user = optionalUser.get();
-        String role = user.getRole();
 
         // Genera un token associato all'utente
-        String token = tokenService.generateToken(username, role);
+        String token = tokenService.generateToken(username);
 
-        // Costruisce la risposta con messaggio, ruolo e token
+        // Costruisce la risposta con messaggio e token
         result.put("message", "Login effettuato con successo");
-        result.put("role", role);
         result.put("token", token);
         return result;
     }
