@@ -42,7 +42,7 @@ public class TokenService {
 	public AuthUser getAuthUser(String token) {
 	    Optional<User> optionalUser = userRepository.findByToken(token);  //cerca utente nel db in base al token
 	        User user = optionalUser.get();   //.get ritorna i dati dell'utente trovato nel db
-	        return new AuthUser(user.getUsername()); // ritorna l'authuser con i dati dell'utente
+	        return new AuthUser(user.getUsername(), user.getToken()); // ritorna l'authuser con i dati dell'utente
 	}
 
     /**

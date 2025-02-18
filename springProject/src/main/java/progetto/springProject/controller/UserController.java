@@ -119,16 +119,17 @@ public class UserController {
 	    @PostMapping("/addUser")
 	    public Object addUser(@RequestBody User newUser, HttpServletRequest request, HttpServletResponse response) {
 	    	// Verifica l'autenticazione
-	    	AuthUser authUser = getAuthenticatedUser(request);
-	        if (authUser == null) {
-	            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-	            return Collections.singletonMap("message", "Non autorizzato");
-	        }
-	        
-	        // Salva il nuovo utente nel database
-	        newUser.setUsername(newUser.getName());
+//	    	AuthUser authUser = getAuthenticatedUser(request);
+//	        if (authUser == null) {
+//	            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//	            return Collections.singletonMap("message", "Non autorizzato");
+//	        }
+//	        
+//	        // Salva il nuovo utente nel database
+//	        newUser.setUsername(newUser.getName());
+	    	
 	        userRepository.save(newUser);
-	        return Collections.singletonMap("message", "Utente aggiunto con successo");
+	        return Collections.singletonMap("message", "Utente registrato con successo");
 	    }
 
 	    /**
@@ -138,7 +139,13 @@ public class UserController {
 	     * @param request Oggetto HttpServletRequest contenente gli header della richiesta
 	     * @return L'oggetto AuthUser associato al token, oppure null se il token non è presente o non valido
 	     */
+	    
+	    
+	    @PostMapping("/checkLogin")
+	    @CrossOrigin(origins = {})
 	    private AuthUser getAuthenticatedUser(HttpServletRequest request) {
+	    	
+	    	System.out.println(request);
 	        // Legge l'header "Authorization"
 	        String authHeader = request.getHeader("Authorization");
 	        if (authHeader != null && !authHeader.isEmpty()) {

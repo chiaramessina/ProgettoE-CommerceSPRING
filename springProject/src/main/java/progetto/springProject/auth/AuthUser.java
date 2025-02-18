@@ -5,7 +5,7 @@ public class AuthUser {
 	// Username dell'utente autenticato
     private String username;
     
-    private Long id;
+    private String token;
     
 
     /**
@@ -13,26 +13,27 @@ public class AuthUser {
      *
      * @param username Username dell'utente
      */
-    public AuthUser(String username) {
-       this.username = username;
-    }
+    public AuthUser(String username, String token) {
+        this.username = username;
+        this.token = token;
+     }
 
-    // Getter e Setter per username e ruolo
+     // Getter e Setter per username e ruolo
 
-    public String getUsername() {
-       return username;
-    }
+     public String getUsername() {
+        return username;
+     }
 
-    public void setUsername(String username) {
-       this.username = username;
-    }
+     public void setUsername(String username) {
+        this.username = username;
+     }
 
-	public Long getId() {
-		return id;
-	}
+ 	public String getToken() {
+ 		return token;
+ 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+ 	public void setToken(String token) {
+ 		this.token = token;
+ 	}
 
 }

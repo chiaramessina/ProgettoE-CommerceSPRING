@@ -11,8 +11,8 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy = "user")
-	List<Orders> orders;
+//	@OneToMany(mappedBy = "user")
+//	List<Orders> orders;
 	
 	//nome utente id univoco
 	@Column(nullable= false, unique= true)
