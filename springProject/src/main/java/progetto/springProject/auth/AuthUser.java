@@ -5,8 +5,9 @@ public class AuthUser {
 	// Username dell'utente autenticato
     private String username;
     
+    private String token;
+    
     // Ruolo dell'utente autenticato (es. "admin" o "user")
-    private String role;
 
     /**
      * Costruttore che inizializza l'oggetto AuthUser con username e ruolo.
@@ -14,9 +15,9 @@ public class AuthUser {
      * @param username Username dell'utente
      * @param role     Ruolo dell'utente
      */
-    public AuthUser(String username, String role) {
+    public AuthUser(String username, String token) {
        this.username = username;
-       this.role = role;
+       this.token = token;
     }
 
     // Getter e Setter per username e ruolo
@@ -29,11 +30,14 @@ public class AuthUser {
        this.username = username;
     }
 
-    public String getRole() {
-       return role;
-    }
+	public String getToken() {
+		return token;
+	}
 
-    public void setRole(String role) {
-       this.role = role;
-    }
+	public void setToken(String token) {
+		this.token = token;
+	}
+    
+    
+
 }

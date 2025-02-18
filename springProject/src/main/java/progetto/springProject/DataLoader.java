@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
  * Implementa l'interfaccia CommandLineRunner, che esegue il metodo run() dopo l'avvio.
  */
 @Component
-public class DataLoader implements CommandLineRunner{
-	
-	private final UserRepository userRepository;
+public class DataLoader implements CommandLineRunner {
+
+    private final UserRepository userRepository;
 
     /**
      * Iniezione del repository tramite costruttore.
@@ -22,7 +22,11 @@ public class DataLoader implements CommandLineRunner{
         this.userRepository = userRepository;
     }
 
-    //se il db è vuoto, inserisce utenti di esempio
+    /**
+     * Metodo eseguito al termine dell'avvio dell'applicazione.
+     * Se il database è vuoto, inserisce alcuni utenti di esempio.
+     */
+    
     @Override
     public void run(String... args) throws Exception {
         if (userRepository.count() == 0) {
@@ -30,10 +34,12 @@ public class DataLoader implements CommandLineRunner{
             User adminUser = new User(
                 null,               // ID (generato automaticamente)
                 "admin",            // username
-                "adminpass",        // password (in chiaro per semplicità)
-                "admin",            // ruolo
-                "Mario Rossi",      // nome completo
-                "mario.rossi@example.com" // email
+                "adminpass",        // password (in chiaro per semplicità)           // ruolo
+                "Mario",      // nome completo
+                "mario.rossi@example.com", // email
+                null, // token
+                "Rossi"
+
             );
             userRepository.save(adminUser);
 
@@ -42,9 +48,11 @@ public class DataLoader implements CommandLineRunner{
                 null,
                 "user",
                 "userpass",
-                "user",
                 "Luigi Bianchi",
-                "luigi.bianchi@example.com"
+                "luigi.bianchi@example.com",
+                null, // token
+                "Bianchi"
+
             );
             userRepository.save(normalUser);
 
@@ -53,9 +61,10 @@ public class DataLoader implements CommandLineRunner{
                 null,
                 "anna",
                 "annapass",
-                "user",
-                "Anna Verdi",
-                "anna.verdi@example.com"
+                "Anna",
+                "anna.verdi@example.com",
+                null, // token
+                "Verdi"
             );
             userRepository.save(user2);
         }
