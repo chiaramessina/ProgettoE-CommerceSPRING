@@ -29,7 +29,7 @@ public class User {
 
 	 //costruttore default per jpa
 	 public User() {}
-
+	 //implementare gestione ordini
 	 /**
 	     * Costruttore con parametri.
 	     *
