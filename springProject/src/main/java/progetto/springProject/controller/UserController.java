@@ -162,4 +162,58 @@ public class UserController {
 	        // Se non c'è header "Authorization", restituisce null
 	        return null;
 	    }
+	    
+	    /*//per visualizzare il profilo
+	    @GetMapping("/me")
+	    public Object getAuthenticatedUserDetails(HttpServletRequest request, HttpServletResponse response) {
+	        // Verifica l'utente autenticato tramite il token
+	        AuthUser authUser = getAuthenticatedUser(request);
+	        if (authUser == null) {
+	            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+	            return Collections.singletonMap("message", "Non autorizzato");
+	        }
+
+	        // Cerca l'utente nel database usando l'username ottenuto dal token
+	        Optional<User> userOpt = userRepository.findByUsername(authUser.getUsername());
+	        if (!userOpt.isPresent()) {
+	            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+	            return Collections.singletonMap("message", "Utente non trovato");
+	        }
+
+	        // Restituisce l'utente autenticato
+	        return userOpt.get();
+	    }*/
+	   /* @PutMapping("/me")
+	    public Object updateProfile(@RequestBody Map<String, String> updates, HttpServletRequest request, HttpServletResponse response) {
+	        // Ottieni l'utente autenticato dal token
+	        AuthUser authUser = getAuthenticatedUser(request);
+	        if (authUser == null) {
+	            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+	            return Collections.singletonMap("message", "Non autorizzato");
+	        }
+
+	        // Trova l'utente nel database tramite username
+	        Optional<User> userOpt = userRepository.findByUsername(authUser.getUsername());
+	        if (!userOpt.isPresent()) {
+	            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+	            return Collections.singletonMap("message", "Utente non trovato");
+	        }
+
+	        // Aggiorna i dati dell'utente con i nuovi valori
+	        User user = userOpt.get();
+	        if (updates.containsKey("username")) {
+	            user.setUsername(updates.get("username"));
+	        }
+	        if (updates.containsKey("name")) {
+	            user.setName(updates.get("name"));
+	        }
+	        if (updates.containsKey("email")) {
+	            user.setEmail(updates.get("email"));
+	        }
+
+	        // Salva l'utente aggiornato nel database
+	        userRepository.save(user);
+
+	        return Collections.singletonMap("message", "Profilo aggiornato con successo");
+	    }*/
 }
